@@ -49,6 +49,7 @@ $(function () {
                     return layer.msg('登录失败！')
                 }
                 layer.msg('登录成功！')
+                sessionStorage.setItem('token', res.token)
                 // 跳转到主页
                 location.href = '/index.html'
             }
