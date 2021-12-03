@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/assets/lib/cropper/cropper.css" />
+    <link rel="stylesheet" href="/assets/css/form_pub.css" />
+    <link rel="stylesheet" href="/assets/css/art_edit.css" />
+    <script src="/assets/lib/jquery.js"></script>
+    <script src="/assets/lib/layui/layui.all.js"></script>
+    <script src="/assets/lib/template-web.js"></script>
+    <!-- 富文本 -->
+    <script src="/assets/lib/tinymce/tinymce.min.js"></script>
+    <script src="/assets/lib/tinymce/tinymce_setup.js"></script>
+    <!-- 裁剪区域 -->
+    <script src="/assets/lib/cropper/Cropper.js"></script>
+    <script src="/assets/lib/cropper/jquery-cropper.js"></script>
+    <script src="/assets/js/baseApi.js"></script>
+    <script src="/assets/js/aritcle/art_edit.js"></script>
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">修改文章</div>
+        <div class="layui-card-body">
+            <form class="layui-form" lay-filter="form-edit" id="form-edit">
+                <!-- form-item-1 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <!-- form-item-2 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章类别</label>
+                    <div class="layui-input-block">
+                        <select name="cate_id" lay-verify="required"></select>
+                    </div>
+                </div>
+                <!-- form-item-3 -->
+                <div class=" layui-form-item">
+                    <laybel class="layui-form-label">文章内容</laybel>
+                    <div class="layui-input-block" style="height: 400px;">
+                        <textarea name="content" id="content"></textarea>
+                    </div>
+                </div>
+                <!-- form-item-4 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章封面</label>
+                    <div class="layui-input-block cover-box">
+                        <div class="cover-left">
+                            <img src="/assets/images/sample2.jpg" alt="" id="image">
+                        </div>
+                        <div class="cover-right">
+                            <div class="img-preview"></div>
+                            <button type="button" class="layui-btn layui-btn-danger" id="btnChooseImage">选择封面</button>
+                            <!-- 隐藏的文件选择框 -->
+                            <input type="file" style="display:none" id="coverFile" accept="image/png,image/jpeg,image/gif" />
+                        </div>
+                    </div>
+                </div>
+                <!-- form-item-5 -->
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit>修改</button>
+                        <button class="layui-btn layui-btn-primary" lay-submit id="btnSave2">存为草稿</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/html" id="tpl-cate">
+        <option value="">请选择文章列表</option>
+        {{each data}}
+        <option value="{{$value.Id}}">{{$value.name}}</option>>
+        {{/each}}
+    </script>
+</body>
+
+</html>
